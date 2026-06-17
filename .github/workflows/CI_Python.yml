@@ -21,13 +21,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
  
-      - name: Check Python Syntax
+      - name: Syntax Checking
         run: |
           python -m py_compile db_connect.py
           python -m py_compile sourcecode1.py
           python -m py_compile streamlit_code.py
  
-      - name: Create staging folder
+      - name: staging folder
         run: |
           mkdir staging
           cp *.py requirements.txt staging
@@ -35,7 +35,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: smart-recipe-project
+          name: python
           path: staging
  
       - name: Run Simple Test
